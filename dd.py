@@ -1,13 +1,10 @@
 import evdev
 
-# Set the ID of the RFID reader
-rfid_device_id = '1234:5678:ABCD'
-
-# Find the input device with the given ID
+# Find the input device with the name "RFID reader"
 devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
 rfid_device = None
 for device in devices:
-    if device.info.vendor == 1234 and device.info.product == 5678 and device.info.version == 'ABCD':
+    if device.name == 'RFID reader':
         rfid_device = device
         break
 
